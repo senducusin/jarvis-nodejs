@@ -1,0 +1,19 @@
+{
+  "name": "jarvisnodejs",
+  "version": "1.0.0",
+  "description": "Backend services for testing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://senducusin@bitbucket.org/senducusin/jarvisnodejs.git"
+  },
+  "author": "Jansen Ducusin",
+  "license": "MIT",
+  "homepage": "https://bitbucket.org/senducusin/jarvisnodejs#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
