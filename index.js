@@ -26,18 +26,18 @@ app.get('/api/pizza/orders/:id', (req,res) => {
 })
 
 app.post('/api/pizza/order',(req,res) => {
-    console.log(req.body)
     const body = req.body
+
     if(
-        body["name"] == undefined && 
-        body["size"] == undefined &&
-        body["type"] == undefined &&
-        body["email"] == undefined
+        body.hasOwnProperty("name") === true && 
+        body.hasOwnProperty("size") === true &&
+        body.hasOwnProperty("type") === true &&
+        body.hasOwnProperty("email") === true
         ){
-        res.status(400).send("Invalid Request")
+            orders.push(body)
+            res.send({"status":"OK"})
     }else{
-        orders.push(body)
-        res.send({"status":"OK"})
+        res.status(400).send("Invalid Request")
     }
     
 })
