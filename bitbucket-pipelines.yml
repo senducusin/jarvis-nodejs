@@ -1,0 +1,11 @@
+image: node:14.15.4
+clone:
+  depth: full
+  
+pipelines:
+  branches:
+    master:
+      - step:
+          script:
+            - git remote set-url origin https://heroku:$3d7d94be-001b-4794-bb47-ccc0980358e7@git.heroku.com/$jarvis-nodejs.git
+            - git push origin `git subtree split --prefix backend master`:master --force
