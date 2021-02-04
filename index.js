@@ -1,25 +1,19 @@
 const express = require('express')
 const app = express()
 
-var orders = [
-    {
-        "name":"Hawaiian Delight",
-        "size":"Large"
-    },{
-        "name":"Classic Cheese",
-        "size":"Party"
-    }
-]
+app.use(express.json())
 
-app.get('/', (req,rest) => {
-    rest.send('Hello World!')
+var orders = []
+
+app.get('/', (req,res) => {
+    res.redirect("https://senducusin.github.io/portfolio/")
 })
 
-app.get('/api/orders', (req,res) => {
+app.get('/api/pizza/orders', (req,res) => {
     res.send(orders)
 })
 
-app.get('/api/orders/:id', (req,res) => {
+app.get('/api/pizza/orders/:id', (req,res) => {
     const orderId = req.params.id - 1
 
     console.log(`${orderId} - ${orders.length - 1}: ${orderId <= (orders.length - 1)}`)
@@ -29,6 +23,23 @@ app.get('/api/orders/:id', (req,res) => {
     }else{
         res.send(orders[orderId])
     }
+})
+
+app.post('/api/pizza/order',(req,res) => {
+    console.log(req.body)
+    const body = req.body
+    if(
+        body["name"] == undefined && 
+        body["size"] == undefined &&
+        body["type"] == undefined &&
+        body["email"] == undefined
+        ){
+        res.status(400).send("Invalid Request")
+    }else{
+        orders.push(body)
+        res.send({"status":"OK"})
+    }
+    
 })
 
 // Uses set port else custom (3000)
