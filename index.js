@@ -39,7 +39,7 @@ app.post('/api/pizza/order',(req,res) => {
         body.hasOwnProperty("email") === true
         ){
             orders.push(body)
-            res.send({"status":"OK"})
+            res.send(body)
     }else{
         res.status(400).send("Invalid Request")
     }
