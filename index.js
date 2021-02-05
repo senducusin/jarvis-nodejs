@@ -4,10 +4,40 @@ const app = express()
 app.use(express.json())
 
 var orders = []
+let stocks = [
+    {
+        "symbol":"GOOG",
+        "description":"Google Innovation Media",
+        "price":1080,
+        "change":"-0.24"
+    },
+    {
+        "symbol":"MSFT",
+        "description":"Microsoft Coorperation",
+        "price":60,
+        "change":"+3.45"
+    },{
+        "symbol":"FB",
+        "description":"Facebook Social Media",
+        "price":220,
+        "change":"-1.56"
+    },
+    {
+        "symbol":"AMAZON",
+        "description":"Amazon Everything Store",
+        "price":400,
+        "change":"+6.56"
+    }
+]
 
 app.get('/', (req,res) => {
     console.log(`Request from ${req.ip}`)
     res.redirect("https://senducusin.github.io/portfolio/")
+})
+
+app.get('/api/stocks', (req,res) => {
+    console.log(`Request from ${req.ip}`)
+    res.send(stocks)
 })
 
 app.get('/api/pizza/orders', (req,res) => {
