@@ -4,6 +4,7 @@ const app = express()
 app.use(express.json())
 
 var orders = []
+
 let stocks = [
     {
         "symbol":"GOOG",
@@ -30,6 +31,19 @@ let stocks = [
     }
 ]
 
+let topNews = [
+    {
+        "title":"PayPal is shutting down domestic payments business in India",
+        "author":"Manish Singh",
+        "imageURL":"https://techcrunch.com/wp-content/uploads/2021/02/GettyImages-1184251295.jpg?w=600"
+    },
+    {
+        "title":"Kia Is Preparing to Build Apple Cars in the U.S.",
+        "author":"Tim Higgins",
+        "imageUrl": "https://images.wsj.net/im-295437/social"
+    }
+] 
+
 app.get('/', (req,res) => {
     console.log(`Request from ${req.ip}`)
     res.redirect("https://senducusin.github.io/portfolio/")
@@ -38,6 +52,11 @@ app.get('/', (req,res) => {
 app.get('/api/stocks', (req,res) => {
     console.log(`Request from ${req.ip}`)
     res.send(stocks)
+})
+
+app.get('/api/top-news',(req,res) => {
+    console.log(`Request from ${req.ip}`)
+    res.send(topNews)
 })
 
 app.get('/api/pizza/orders', (req,res) => {
