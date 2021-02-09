@@ -34,13 +34,13 @@ let stocks = [
 let topNews = [
     {
         "title":"PayPal is shutting down domestic payments business in India",
-        "author":"Manish Singh",
-        "imageURL":"https://techcrunch.com/wp-content/uploads/2021/02/GettyImages-1184251295.jpg?w=600"
+        "imageUrl":"https://techcrunch.com/wp-content/uploads/2021/02/GettyImages-1184251295.jpg?w=600",
+        "author":"Manish Singh"
     },
     {
         "title":"Kia Is Preparing to Build Apple Cars in the U.S.",
-        "author":"Tim Higgins",
-        "imageUrl": "https://images.wsj.net/im-295437/social"
+        "imageUrl": "https://images.wsj.net/im-295437/social",
+        "author":"Tim Higgins"
     }
 ] 
 
