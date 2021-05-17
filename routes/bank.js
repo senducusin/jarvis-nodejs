@@ -6,13 +6,13 @@ var accounts = [
     {
         name: 'John Doe',
         id: uuidv4(),
-        accountType: 'Checking',
+        accountType: 'checking',
         balance: 800.00
     },
     {
         name: 'John Doe',
         id: uuidv4(),
-        accountType: 'Saving',
+        accountType: 'saving',
         balance: 700.00
     }
 ]
