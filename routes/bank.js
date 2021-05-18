@@ -26,7 +26,6 @@ router.get('/api/bank/accounts', (req, res) => {
 
 router.post('/api/bank/create', (req, res) => {
 
-    console.log(req.body)
     let name = req.body.name
     let accountType = req.body.accountType
     let balance = req.body.balance
@@ -40,6 +39,8 @@ router.post('/api/bank/create', (req, res) => {
     accounts.push(account)
 
     res.json(accounts)
+
+    console.log(accounts)
 })
 
 module.exports = router
