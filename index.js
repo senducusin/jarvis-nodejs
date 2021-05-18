@@ -4,7 +4,7 @@ const app = express()
 const stocksRoutes = require('./routes/stocks');
 const topNewsRoutes = require('./routes/topNews');
 const pizzaRoutes = require('./routes/pizza');
-const bankRoutes = require('./routes/bank');
+const bankRoutes = require('./routes/bank').router;
 
 app.use(express.json())
 

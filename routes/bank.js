@@ -1,23 +1,18 @@
+
 const express = require('express')
 const app = express()
 const router = express.Router()
 const { v4: uuidv4, NIL } = require('uuid');
+const Account = require("../account")
 
 app.use(express.json())
 
-var accounts = [
-    {
-        name: 'John Doe',
-        id: uuidv4(),
-        accountType: 'checking',
-        balance: 800.00
-    },
-    {
-        name: 'John Doe',
-        id: uuidv4(),
-        accountType: 'saving',
-        balance: 700.00
-    }
+let johnDoeChecking = new Account('John Doe', uuidv4(), 'checking', 800.00)
+let johnDoeSaving = new Account('John Doe', uuidv4(), 'saving', 700.00)
+
+let accounts = [
+    johnDoeChecking,
+    johnDoeSaving
 ]
 
 router.get('/api/bank/accounts', (req, res) => {
@@ -31,18 +26,22 @@ router.post('/api/bank/create', (req, res) => {
     let accountType = req.body.accountType
     let balance = req.body.balance
 
-    let account = {
-        id: (id == null) ? uuidv4() : id,
-        name: name,
-        accountType: accountType,
-        balance: balance
-    }
+    let account = new Account(id, name, accountType, balance)
 
-    accounts.push(account)
-
-    res.json(accounts)
-
-    console.log(accounts)
+    account.save(accounts, (newAccount, error) => {
+        if (newAccount) {
+            accounts.push(newAccount)
+            res.json({ status: true })
+        } else {
+            res.json({
+                status: false,
+                message: error
+            })
+        }
+    })
 })
 
-module.exports = router
+module.exports = {
+    router: router,
+    accounts: accounts
+}
