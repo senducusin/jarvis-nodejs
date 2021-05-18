@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const router = express.Router()
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4, NIL } = require('uuid');
 
 app.use(express.json())
 
@@ -26,11 +26,13 @@ router.get('/api/bank/accounts', (req, res) => {
 
 router.post('/api/bank/create', (req, res) => {
 
+    let id = req.body.id
     let name = req.body.name
     let accountType = req.body.accountType
     let balance = req.body.balance
 
     let account = {
+        id: (id == null) ? uuidv4() : id,
         name: name,
         accountType: accountType,
         balance: balance
