@@ -7,8 +7,8 @@ const Account = require("../account")
 
 app.use(express.json())
 
-let johnDoeChecking = new Account('John Doe', uuidv4(), 'checking', 800.00)
-let johnDoeSaving = new Account('John Doe', uuidv4(), 'saving', 700.00)
+let johnDoeChecking = new Account(uuidv4(), 'John Doe', 'checking', 800.00)
+let johnDoeSaving = new Account(uuidv4(), 'John Doe', 'saving', 700.00)
 
 let accounts = [
     johnDoeChecking,
@@ -31,15 +31,18 @@ router.post('/api/bank/create', (req, res) => {
     account.save(accounts, (newAccount, error) => {
         if (newAccount) {
             accounts.push(newAccount)
+
             res.json({
-                status: true,
-                message: " "
+                status: true
             })
+
         } else {
+
             res.json({
                 status: false,
                 message: error
             })
+
         }
     })
 })
