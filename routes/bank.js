@@ -31,7 +31,10 @@ router.post('/api/bank/create', (req, res) => {
     account.save(accounts, (newAccount, error) => {
         if (newAccount) {
             accounts.push(newAccount)
-            res.json({ status: true })
+            res.json({
+                status: true,
+                message: ""
+            })
         } else {
             res.json({
                 status: false,
