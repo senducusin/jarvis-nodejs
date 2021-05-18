@@ -23,6 +23,25 @@ class Account {
 
         return accounts.find(account => account.name == name && account.accountType == type)
     }
+
+    transfer(toAccount, amount, completion) {
+        if ((this.balance - amount) < 0) {
+            completion(false, "Insufficient funds!")
+            return
+        }
+
+        this.withdraw(amount)
+        toAccount.deposit(amount)
+        completion(true)
+    }
+
+    deposit(amount) {
+        this.balance += amount
+    }
+
+    withdraw(amount) {
+        this.balance -= amount
+    }
 }
 
 module.exports = Account

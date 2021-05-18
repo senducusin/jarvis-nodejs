@@ -7,8 +7,8 @@ const Account = require("../account")
 
 app.use(express.json())
 
-let johnDoeChecking = new Account(uuidv4(), 'John Doe', 'checking', 800.00)
-let johnDoeSaving = new Account(uuidv4(), 'John Doe', 'saving', 700.00)
+let johnDoeChecking = new Account("65c0be51-9f3d-4cdb-8d7b-1618ba0474df", 'John Doe', 'checking', 800.00)
+let johnDoeSaving = new Account("bbe17900-ebcf-4b61-9620-55b5c08e6681", 'John Doe', 'saving', 700.00)
 
 let accounts = [
     johnDoeChecking,
@@ -43,6 +43,23 @@ router.post('/api/bank/create', (req, res) => {
                 message: error
             })
 
+        }
+    })
+})
+
+router.post("/api/bank/transfer", (req, res) => {
+    let accountFromId = req.body.accountFromId
+    let accountToId = req.body.accountToId
+    let amount = req.body.amount
+
+    let fromAccount = accounts.find(account => account.id == accountFromId)
+    let toAccount = accounts.find(account => account.id == accountToId)
+
+    fromAccount.transfer(toAccount, amount, (transferred, error) => {
+        if (transferred) {
+            res.json({ status: true })
+        } else {
+            res.json({ status: false, message: error })
         }
     })
 })
