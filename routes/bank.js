@@ -1,6 +1,9 @@
 const express = require('express')
+const app = express()
 const router = express.Router()
 const { v4: uuidv4 } = require('uuid');
+
+app.use(express.json())
 
 var accounts = [
     {
@@ -18,6 +21,24 @@ var accounts = [
 ]
 
 router.get('/api/bank/accounts', (req, res) => {
+    res.json(accounts)
+})
+
+router.post('/api/bank/create', (req, res) => {
+
+    console.log(req.body)
+    let name = req.body.name
+    let accountType = req.body.accountType
+    let balance = req.body.balance
+
+    let account = {
+        name: name,
+        accountType: accountType,
+        balance: balance
+    }
+
+    accounts.push(account)
+
     res.json(accounts)
 })
 
