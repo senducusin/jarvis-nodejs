@@ -55,6 +55,8 @@ router.post("/api/bank/transfer", (req, res) => {
     let fromAccount = accounts.find(account => account.id == accountFromId)
     let toAccount = accounts.find(account => account.id == accountToId)
 
+    console.log(req.body)
+
     fromAccount.transfer(toAccount, amount, (transferred, error) => {
         if (transferred) {
             res.json({ status: true })
