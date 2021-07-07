@@ -6,7 +6,7 @@ var orders = []
 
 router.get('/api/pizza/orders', (req, res) => {
     console.log(`Request from ${req.ip}`)
-    res.send(orders)
+    res.json(orders)
 })
 
 router.get('/api/pizza/orders/:id', (req, res) => {
@@ -17,7 +17,7 @@ router.get('/api/pizza/orders/:id', (req, res) => {
     if (orderId > (orders.length - 1) || (orderId < 0)) {
         res.status(404).send("That order ID is not found")
     } else {
-        res.send(orders[orderId])
+        res.json(orders[orderId])
     }
 })
 
@@ -33,7 +33,7 @@ router.post('/api/pizza/order', (req, res) => {
         body.hasOwnProperty("email") === true
     ) {
         orders.push(body)
-        res.send(body)
+        res.json(body)
     } else {
         res.status(400).send("Invalid Request")
     }
