@@ -9,6 +9,7 @@ const stocksRoutes = require('./routes/stocks');
 const topNewsRoutes = require('./routes/topNews');
 const pizzaRoutes = require('./routes/pizza');
 const bankRoutes = require('./routes/bank').router;
+const datesRoutes = require('./routes/dates');
 
 wss.on("connection", function connection(ws) {
 
@@ -33,6 +34,7 @@ app.use(stocksRoutes);
 app.use(topNewsRoutes);
 app.use(pizzaRoutes);
 app.use(bankRoutes);
+app.use(datesRoutes);
 
 // Uses set port else custom (3000)
 const port = process.env.PORT || 3000
