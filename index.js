@@ -11,6 +11,7 @@ const pizzaRoutes = require('./routes/pizza');
 const bankRoutes = require('./routes/bank').router;
 const datesRoutes = require('./routes/dates');
 const creditsRoutes = require('./routes/credits');
+const musicRoutes = require('./routes/music');
 
 wss.on("connection", function connection(ws) {
 
@@ -28,7 +29,7 @@ app.use(express.json())
 
 app.get('/', (req, res) => {
     console.log(`Request from ${req.ip}`)
-    res.redirect("https://senducusin-portfolio.herokuapp.com/")
+    res.redirect("https://portfolio-v2-nvui.onrender.com/")
 })
 
 app.use(stocksRoutes);
@@ -37,6 +38,7 @@ app.use(pizzaRoutes);
 app.use(bankRoutes);
 app.use(datesRoutes);
 app.use(creditsRoutes);
+app.use(musicRoutes);
 
 // Uses set port else custom (3000)
 const port = process.env.PORT || 3000
