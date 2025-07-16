@@ -3,7 +3,7 @@ const router = express.Router();
 
 router.get('/api/music/recents', (req, res) => {
     const recentList = {
-        "recent": [
+        "tracks": [
             {
                 "artist": "Red Hot Chili Peppers",
                 "trackName": "Californication",
