@@ -412,7 +412,7 @@ const acousticMusic = [
     }
 ]
 
-router.get('api/music/all', (req, res) => {
+router.get('/api/music/all', (req, res) => {
     const trackCollection = {
         "tracks": [
         ...rockMusic,
@@ -421,8 +421,8 @@ router.get('api/music/all', (req, res) => {
         ...popMusic,
         ...jazzMusic,
         ...acousticMusic
-    ]
-}
+        ]
+    }
 
     res.json(trackCollection)
 })
