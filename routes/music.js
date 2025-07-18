@@ -72,8 +72,8 @@ const rockMusic = [
 const loveMusic = [
     {  
         "id": uuidv4(),
-        "artist": "Teenage Dream",
-        "trackName": "Katy Perry",
+        "artist": "Katy Perry",
+        "trackName": "Teenage Dream",
         "album": "Teenage Dream (Deluxe Edition)",
         "albumCover": "https://a1.mzstatic.com/r40/Music126/v4/75/97/31/759731eb-b429-dfe3-c41f-34435998d102/13UABIM57845.rgb.jpg",
         "genre": "romance"
@@ -204,14 +204,6 @@ const hipHopMusic = [
 ]
 
 const popMusic = [
-    {
-        "id": uuidv4(),
-        "artist": "Shawn Mendes & Justin Bieber",
-        "trackName": "Monster",
-        "album": "Wonder",
-        "albumCover": "https://a1.mzstatic.com/r40/Music125/v4/d5/f0/d2/d5f0d270-fc16-5691-d83e-917c067a6561/20UMGIM83351.rgb.jpg",
-        "genre": "pop"
-    },
     {
         "id": uuidv4(),
         "artist": "Shawn Mendes & Justin Bieber",
@@ -425,6 +417,60 @@ router.get('/api/music/all', (req, res) => {
     }
 
     res.json(trackCollection)
+})
+
+router.get('/api/music/:genre', (req, res) => {
+    const genre = req.params.genre
+
+    switch (genre) {
+        case "rock":
+            res.json({
+                "tracks": rockMusic
+            })
+
+            break;
+
+        case "romance":
+            res.json({
+                "tracks": loveMusic
+            })
+
+            break;
+
+        case "hip-hop":
+            res.json({
+                "tracks": hipHopMusic
+            })
+
+            break;
+
+        case "pop":
+            res.json({
+                "tracks": popMusic
+            })
+
+            break;
+
+        case "jazz":
+            res.json({
+                "tracks": jazzMusic
+            })
+
+            break;
+
+        case "acoustic":
+            res.json({
+                "tracks": acousticMusic
+            })
+
+            break;
+    
+        default:
+            res.json({
+                "tracks": []
+            })
+            break;
+    }
 })
 
 router.get('/api/music/recents', (req, res) => {
