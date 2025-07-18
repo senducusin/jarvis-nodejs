@@ -419,60 +419,6 @@ router.get('/api/music/all', (req, res) => {
     res.json(trackCollection)
 })
 
-router.get('/api/music/:genre', (req, res) => {
-    const genre = req.params.genre
-
-    switch (genre) {
-        case "rock":
-            res.json({
-                "tracks": rockMusic
-            })
-
-            break;
-
-        case "romance":
-            res.json({
-                "tracks": loveMusic
-            })
-
-            break;
-
-        case "hip-hop":
-            res.json({
-                "tracks": hipHopMusic
-            })
-
-            break;
-
-        case "pop":
-            res.json({
-                "tracks": popMusic
-            })
-
-            break;
-
-        case "jazz":
-            res.json({
-                "tracks": jazzMusic
-            })
-
-            break;
-
-        case "acoustic":
-            res.json({
-                "tracks": acousticMusic
-            })
-
-            break;
-    
-        default:
-            res.json({
-                "tracks": []
-            })
-            break;
-    }
-})
-
 router.get('/api/music/recents', (req, res) => {
     const recentList = {
         "tracks": [
@@ -545,5 +491,60 @@ router.get('/api/music/recents', (req, res) => {
 
     res.json(recentList)
 })
+
+router.get('/api/music/:genre', (req, res) => {
+    const genre = req.params.genre
+
+    switch (genre) {
+        case "rock":
+            res.json({
+                "tracks": rockMusic
+            })
+
+            break;
+
+        case "romance":
+            res.json({
+                "tracks": loveMusic
+            })
+
+            break;
+
+        case "hip-hop":
+            res.json({
+                "tracks": hipHopMusic
+            })
+
+            break;
+
+        case "pop":
+            res.json({
+                "tracks": popMusic
+            })
+
+            break;
+
+        case "jazz":
+            res.json({
+                "tracks": jazzMusic
+            })
+
+            break;
+
+        case "acoustic":
+            res.json({
+                "tracks": acousticMusic
+            })
+
+            break;
+    
+        default:
+            res.json({
+                "tracks": []
+            })
+            break;
+    }
+})
+
 
 module.exports = router
